@@ -1,2 +1,4 @@
-# apache2-php-boshrelease
-An Apache2+PHP bosh release
+# httpd-php-boshrelease
+
+httpd 2.4.29
+php 7.1.11

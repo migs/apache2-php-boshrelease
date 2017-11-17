@@ -1,0 +1,13 @@
+set -e
+
+export HOME=/var/vcap
+
+cd php
+tar xzf php-7.*.tar.gz
+cd php-7.1.11
+./configure \
+--with-mysql \
+--with-apxs2=${HOME}/packages/httpd/usr/local/apache2/bin/apxs \
+--prefx=${BOSH_INSTALL_TARGET}
+make
+make install

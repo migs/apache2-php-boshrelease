@@ -1,0 +1,11 @@
+set -e
+
+export HOME=/var/vcap
+
+cd httpd
+tar xzf httpd-2.*.tar.gz
+./configure \
+--with-included-apr \
+--prefix=${BOSH_INSTALL_TARGET}
+make
+make install

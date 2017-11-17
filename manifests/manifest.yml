@@ -1,0 +1,50 @@
+---
+name: httpd-php-boshrelease
+
+releases:
+- name: apr
+  version: 1.6.3
+  url: http://apache.mirrors.nublue.co.uk//apr/apr-1.6.3.tar.gz
+  sha1: 572c6f47be5b08d9087474b363e7f202c6204920
+- name: apr-util
+  version: 1.6.1
+  url: http://apache.mirrors.nublue.co.uk//apr/apr-util-1.6.1.tar.gz
+  sha1: 5bae4ff8f1dad3d7091036d59c1c0b2e76903bf4
+- name: httpd
+  version: 2.4.29
+  url: http://apache.mirrors.nublue.co.uk//httpd/httpd-2.4.29.tar.gz
+  sha1: 16707ec0642b8a1555502e1dcf8d42836f695bc0
+- name: php
+  version: 7.1.11
+  url: http://uk1.php.net/get/php-7.1.11.tar.gz/from/this/mirror
+  sha1: d8cef4f99e119f9950aa4e0c10d26a9d9ecc5ee3
+
+stemcells:
+- alias: default
+  os: ubunty-trusty
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+instance_groups:
+- name: httpd-php
+  azs:
+  - z1
+  instances: 1
+  jobs:
+  - name: httpd
+    release: httpd
+    properties:
+      httpd:
+        http-port: ((httpd_http-port))
+  - name: php
+    release: php
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default
+    type: dynamic
