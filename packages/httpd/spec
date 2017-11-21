@@ -2,8 +2,6 @@
 name: httpd
 
 dependencies:
-- apr
-- apr-util
 
 files:
-- httpd/httpd-2.*.tar.gz
+- apache.org/httpd/**/*

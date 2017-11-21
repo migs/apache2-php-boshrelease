@@ -1,0 +1,6 @@
+[submodule "src/apache.org/httpd"]
+	path = src/apache.org/httpd
+	url = git://git.apache.org/httpd.git
+[submodule "src/github.com/php/php-src"]
+	path = src/github.com/php/php-src
+	url = https://github.com/php/php-src.git
